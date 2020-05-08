@@ -1,21 +1,53 @@
-# Hello world javascript action
+# Nexploit Scan Runner
 
-This action prints "Hello World" or "Hello" + the name of a person to greet to the log.
+This action runs a new scan in Nexploit, or reruns an existing one.
 
 ## Inputs
 
-### `who-to-greet`
+### `api_token`
 
-**Required** The name of the person to greet. Default `"World"`.
+**Required** Api Token. You can generate it in *Organization* section
 
-## Outputs
+### `scan`
 
-### `time`
-
-The time we greeted you.
+Scan ID to restart.
 
 ## Example usage
 
-uses: actions/hello-world-javascript-action@v1
-with:
-  who-to-greet: 'Mona the Octocat'
+Start a new scan with parameters
+
+```yml
+steps:
+- name: Stop Nexploit Scan
+  id: stop
+  uses: NeuraLegion/stop-scan@v1
+  with:
+    api_token: ${{ secrets.NEXPLOIT_TOKEN }}
+    name: GitHub scan ${{ github.sha }}
+    discovery_types: |
+      [ "crawler", "archive" ]
+    crawler_urls: |
+      [ "http://vulnerable-bank.com" ]
+    file_id: LiYknMYSdbSZbqgMaC9Sj
+    hosts_filter: |
+      [ ]
+    wait_for: on_any
+- name: Get the output scan url
+  run: echo "The scan was started on ${{ steps.start.outputs.url }}"
+```
+
+Restart an existing scan
+
+```yml
+steps:
+    - name: Start Nexploit Scan
+      id: start
+      uses: NeuraLegion/run-scan@v0.2
+      with:
+        api_token: ${{ secrets.NEXPLOIT_TOKEN }}
+        name: GitHub scan ${{ github.sha }}
+        restart_scan: ai3LG8DmVn9Rn1YeqCNRGQ
+        wait_for: on_any
+    - name: Get the output scan url
+      run: echo "The scan was started on ${{ steps.start.outputs.url }}"
+```

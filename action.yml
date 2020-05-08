@@ -1,0 +1,18 @@
+name: 'Nexploit Stop Scan'
+description: 'Stops Nexploit Scan'
+branding:
+  icon: stop-circle
+  color: blue
+inputs:
+  api_token:
+    description: 'Api Token. You can generate it in Organization section'
+    required: true
+  scan:
+    description: 'Scan ID to wait for'
+    required: true
+  hostname:
+    description: 'Hostname. Default is nexploit.app'
+    required: false
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
