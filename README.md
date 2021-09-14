@@ -1,20 +1,39 @@
-# Stop Nexploit Scan
+# Stop a Nexploit Scan
 
-This action stops a Nexploit scan
+This action stops a Nexploit scan.
+
+## About NeuraLegion's Nexploit 
+
+NeuraLegion’s NexPloit is a Dynamic Application Security Testing (DAST) solution powered by Artificial Intelligence (AI) and modern scanning technologies. With its effective automation and integration capabilities, Nexploit allows developers to scan multiple targets, uncover security vulnerabilities without false positives, get detailed reports on every finding,  and quickly fix security issues by following the remediation guidelines. 
+
+Nexploit is built to solve the core security tasks of your applications and APIs:
+* 👾 Finding Vulnerabilities (Issues) – As well as finding OWASP Top 10  technical issues (and much more) in your applications, NexPloit’s AI Engine automatically detects unknown Zero-Day and Business-Logic Flow issues, reducing lengthy and costly manual testing, as well as providing False Positive Free reporting and remediation guidelines. 
+* 🚀 Security Testing Automation – Nexploit enables seamless integration into your Software Development Life Cycle (SDLC). As the only solution that has automated Zero-Day detection, our False Positive Free reports are generated in real-time, with pinpoint code instrumentation, empowering your DevOps to the highest security standards, without losing development speed or agility. 
+* 🔐 Security Standard Compliance – Nexploit provides you with a comprehensive scanning flow which simplifies your compliance validation process and provides instant reports on identified issues that accelerate your confirmation process. Nexploit enables you to firmly comply with the standards of OWASP Top 10 technical issues, ISO/IEC 27001, PCI DSS, CWE/SANS, and more.
+
+More information is available on NeuraLegion’s:
+* [Website](https://www.neuralegion.com/)
+* [Knowledge base](https://kb.neuralegion.com/#/guide/np-web-ui/scanning)
+* [YouTube channel](https://www.youtube.com/channel/UCoIC0T1pmozq3eKLsUR2uUw)
+* [GitHub Actions](https://github.com/marketplace?query=neuralegion+)
 
 ## Inputs
 
 ### `api_token`
 
-**Required** Api Token. You can generate it in *Organization* section
+**Required**. Your Nexploit API authorization token (key). You can generate it in the **Organization** section on [nexploit.app](https://nexploit.app/login). Find more information [here](https://kb.neuralegion.com/#/guide/np-web-ui/advanced-set-up/managing-org?id=managing-organization-apicli-authentication-tokens).
+
+_Example:_ `--token ${{ secrets.NEXPLOIT_TOKEN }})`
 
 ### `scan`
 
-Scan ID to stop.
+**Required**. Scan ID to stop.
 
-## Example usage
+_Example:_ `scan: ${{ steps.start.outputs.id }}`
 
-Stop a previously started scan
+## Usage Example
+
+### Stop a previously started scan
 
 ```yml
 start_and_stop_scan:
