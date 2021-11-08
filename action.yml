@@ -1,5 +1,5 @@
-name: 'Nexploit Stop Scan'
-description: 'Stops Nexploit Scan'
+name: 'NeuraLegion Stop Scan'
+description: 'Stops NeuraLegion Scan'
 branding:
   icon: stop-circle
   color: blue
@@ -11,7 +11,7 @@ inputs:
     description: 'Scan ID to wait for'
     required: true
   hostname:
-    description: 'Hostname. Default is nexploit.app'
+    description: 'Hostname. Default is app.neuralegion.com'
     required: false
 runs:
   using: 'node12'
