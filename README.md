@@ -25,7 +25,7 @@ Scans are fast as our AI-powered engine can understand application architecture 
 
 ### No False Positives
 
-Stop chasing ghosts and wasting time. Bright doesn’t return false positives, so you can focus on releasing code.
+Bright keeps false positives to a minimum, letting you focus on real issues and release better code faster.
 
 ### Comprehensive Security Testing
 
@@ -41,7 +41,7 @@ More information is available on Bright’s:
 
 ### `api_token`
 
-**Required**. Your Bright API authorization token (key). You can generate it in the **Organization** section in [the Bright app](https://app.neuralegion.com/login). Find more information [here](https://docs.brightsec.com/docs/manage-your-organization#manage-organization-apicli-authentication-tokens).
+**Required**. Your Bright API authorization token (key). You can generate it in the **Organization** section in [the Bright app](https://app.brightsec.com/login). Find more information [here](https://docs.brightsec.com/docs/manage-your-organization#manage-organization-apicli-authentication-tokens).
 
 _Example:_ `api_token: ${{ secrets.NEURALEGION_TOKEN }}`
 
@@ -58,9 +58,9 @@ _Example:_ `scan: ${{ steps.start.outputs.id }}`
 ```yml
 start_and_stop_scan:
   runs-on: ubuntu-latest
-  name: A job to run a NeuraLegion scan
+  name: A job to run a Bright scan
   steps:
-  - name: 🏁 Start NeuraLegion Scan
+  - name: 🏁 Start Bright Scan
     id: start
     uses: NeuraLegion/run-scan@master
     with:
